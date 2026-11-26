@@ -697,6 +697,20 @@ function LessonView({L, s, update, go, home}){
     <Scene L={L} big onSpot={setSpot} activeSpot={spot}/>
     <SpotPanel L={L} idx={spot}/>
 
+    <section className="block" aria-labelledby="read-passage-h">
+      <span className="eyebrow">Start here</span>
+      <h2 id="read-passage-h">Read the whole passage</h2>
+      <p>Before going through this lesson, take time to read the complete Bible passage. Notice what is happening, who is speaking, and what the passage teaches about God.</p>
+      <div className="feedback" style={{display:"flex",alignItems:"center",justifyContent:"space-between",gap:14,flexWrap:"wrap"}}>
+        <div>
+          <div className="eyebrow">Lesson {L.id} · Main Bible passage</div>
+          <strong style={{fontSize:"1.15rem",color:"var(--gold2)"}}>{L.passage}</strong>
+        </div>
+        <a className="btn" href={esvUrl(L.passage)} target="_blank" rel="noopener noreferrer" style={{display:"inline-flex",alignItems:"center",textDecoration:"none"}}>Read on ESV.org ↗</a>
+      </div>
+      <p className="note" style={{marginTop:10}}>Read the entire passage in your Bible or open it on ESV.org. When you are finished, return here and continue with the lesson.</p>
+    </section>
+
     <section className="block" aria-labelledby="intro-h">
       <h2 id="intro-h">Introduction</h2>
       <p>{kids ? L.kidsIntro : L.intro}</p>
