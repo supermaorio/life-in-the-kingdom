@@ -722,21 +722,6 @@ function LessonView({L, s, update, go, home}){
       <Refs refs={L.refs}/>
     </section>
 
-    <section className="block" aria-labelledby="teach-h">
-      <h2 id="teach-h">Teaching</h2>
-      <div className="teach">
-        {(kids ? L.kidsTeach.map(t=>({t})) : L.teach).map((it,i)=>(
-          it.scope ? <div key={i} className="teachItem"><p style={{margin:0}}>{it.t}</p>
-            <ScopeCards items={L.scope}/></div> :
-          <div key={i} className={"teachItem"+(it.x?" x":"")}>
-            {it.x && <span className="tag xtag">Additional explanation</span>}
-            <p style={{margin:0}}>{it.t}</p>
-          </div>
-        ))}
-      </div>
-      {!kids && <p className="note" style={{marginTop:12}}>Teen Mode shows the study's wording. Notes marked "Additional explanation" are added context, not part of the original PDF.</p>}
-    </section>
-
     {L.interactive.length>0 && <section className="block" aria-labelledby="int-h">
       <h2 id="int-h">Interactive study</h2>
       {L.interactive.map((x,i)=>(
@@ -760,6 +745,21 @@ function LessonView({L, s, update, go, home}){
       <h2 id="quiz-h">Quiz</h2>
       <p className="muted">Pick an answer to see whether you are right and why.</p>
       <Quiz L={L} s={s} set={set}/>
+    </section>
+
+    <section className="block" aria-labelledby="teach-h">
+      <h2 id="teach-h">Teaching</h2>
+      <div className="teach">
+        {(kids ? L.kidsTeach.map(t=>({t})) : L.teach).map((it,i)=>(
+          it.scope ? <div key={i} className="teachItem"><p style={{margin:0}}>{it.t}</p>
+            <ScopeCards items={L.scope}/></div> :
+          <div key={i} className={"teachItem"+(it.x?" x":"")}>
+            {it.x && <span className="tag xtag">Additional explanation</span>}
+            <p style={{margin:0}}>{it.t}</p>
+          </div>
+        ))}
+      </div>
+      {!kids && <p className="note" style={{marginTop:12}}>Teen Mode shows the study's wording. Notes marked "Additional explanation" are added context, not part of the original PDF.</p>}
     </section>
 
     {L.memory && <section className="block" aria-labelledby="mem-h">
